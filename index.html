@@ -1,0 +1,89 @@
+
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Centro B2B · Abuela Tata & Navy & Blue</title>
+<link rel="stylesheet" href="assets/style.css">
+<script>
+function checkPIN() {
+  const okPIN = "AT2026"; // cámbialo cuando quieras
+  const val = document.getElementById('pin').value.trim();
+  const alert = document.getElementById('pinAlert');
+  if(val === okPIN){ window.location.href = "abuela-tata.html"; }
+  else { alert.style.display='block'; }
+  return false;
+}
+function checkPINNB() {
+  const okPIN = "NB2026";
+  const val = document.getElementById('pinNB').value.trim();
+  const alert = document.getElementById('pinAlertNB');
+  if(val === okPIN){ window.location.href = "navy-blue.html"; }
+  else { alert.style.display='block'; }
+  return false;
+}
+</script>
+</head>
+<body>
+<header class="header">
+  <div class="nav">
+    <div class="brand">Centro B2B</div>
+    <div class="row">
+      <span class="tag">GitHub Pages</span>
+      <span class="tag">ES/EN ready</span>
+      <span class="tag">Responsive</span>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="grid">
+    <div class="card">
+      <div class="hero AT">
+        <div class="label"><div class="logo AT">AT</div><div><strong>Abuela Tata</strong><br><small>Comunión · Ceremonia</small></div></div>
+        <div class="pin">
+          <form onsubmit="return checkPIN()">
+            <input id="pin" type="password" placeholder="PIN de acceso">
+            <button class="btn primary" type="submit">Entrar</button>
+          </form>
+        </div>
+        <div id="pinAlert" class="alert">PIN incorrecto.</div>
+        <div class="kpis">
+          <div class="kpi"><strong>Calculadora</strong><div>Vestidos</div></div>
+          <div class="kpi"><strong>Pedidos</strong><div>WhatsApp & Email</div></div>
+        </div>
+      </div>
+      <div class="grid">
+        <a class="linkcard AT" href="abuela-tata.html">
+          <div class="meta"><strong>Entrar al área</strong><small>Funcionalidades y enlaces</small></div> <span>→</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="hero NB">
+        <div class="label"><div class="logo NB">N&B</div><div><strong>Navy & Blue</strong><br><small>Comunión Niño</small></div></div>
+        <div class="pin">
+          <form onsubmit="return checkPINNB()">
+            <input id="pinNB" type="password" placeholder="PIN de acceso">
+            <button class="btn primary" type="submit">Entrar</button>
+          </form>
+        </div>
+        <div id="pinAlertNB" class="alert">PIN incorrecto.</div>
+        <div class="kpis">
+          <div class="kpi"><strong>Calculadora</strong><div>Chaqueta / Pantalón</div></div>
+          <div class="kpi"><strong>Pedidos</strong><div>WhatsApp & Email</div></div>
+        </div>
+      </div>
+      <div class="grid">
+        <a class="linkcard NB" href="navy-blue.html">
+          <div class="meta"><strong>Entrar al área</strong><small>Funcionalidades y enlaces</small></div> <span>→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>© Centro B2B — Abuela Tata & Navy & Blue</footer>
+</body>
+</html>
