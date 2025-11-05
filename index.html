@@ -1,85 +1,167 @@
-
 <!doctype html>
 <html lang="es">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Centro B2B · Abuela Tata & Navy & Blue</title>
-<link rel="stylesheet" href="assets/style.css">
-<script>
-function go(p){ window.location.href=p; }
-function pin(id, ok, target){
-  const v=document.getElementById(id).value.trim(); const a=document.getElementById(id+'Alert');
-  if(v===ok){ window.location.href=target; } else { a.style.display='block'; }
-  return false;
+<title>Centro B2B (App)</title>
+<style>
+:root{
+  --bg:#f8fafc; --ink:#0f172a; --muted:#64748b; --card:#ffffff; --ring:#e2e8f0;
+  --AT:#db8ea3; --AT-ink:#4b2432; --NB:#0b2a4a; --NB-ink:#0a1e33;
 }
+*{box-sizing:border-box} html,body{margin:0}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+.appbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:#ffffffcc;border-bottom:1px solid var(--ring);backdrop-filter:saturate(160%) blur(8px)}
+.appbar .title{font-weight:900;letter-spacing:.2px}
+.iconbtn{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:12px;border:1px solid var(--ring);background:#fff}
+.container{max-width:980px;margin:0 auto;padding:14px}
+.sectionTitle{font-size:13px;color:var(--muted);margin:6px 6px 8px}
+.tile{position:relative;overflow:hidden;border-radius:18px;background:var(--card);border:1px solid var(--ring);box-shadow:0 10px 30px rgba(2,6,23,.08);padding:16px;display:flex;gap:12px;align-items:center}
+.tile + .tile{margin-top:12px}
+.logo{width:56px;height:56px;border-radius:14px;display:grid;place-items:center;overflow:hidden;border:1px solid var(--ring);background:#fff}
+.meta{flex:1}
+.meta .name{font-size:18px;font-weight:900}
+.meta small{color:var(--muted)}
+.cta{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:12px;border:1px solid var(--ring);background:#fff;color:#0f172a;font-weight:700;text-decoration:none;transition:.15s transform ease,.15s box-shadow ease}
+.btn:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(0,0,0,.08)}
+.btn.A{border-color:#ffdce6;background:linear-gradient(180deg,#fff,#fff7fa);color:var(--AT-ink)}
+.btn.N{border-color:#d6e4f2;background:linear-gradient(180deg,#fff,#f6f9fd);color:var(--NB-ink)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+@media(min-width:760px){.grid{grid-template-columns:repeat(4,1fr)}}
+.card{border:1px solid var(--ring);background:#fff;border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:6px}
+.card strong{font-size:13px}.card small{color:var(--muted)}
+.bottomnav{position:sticky;bottom:0;z-index:20;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:10px 12px;background:#ffffffee;border-top:1px solid var(--ring);backdrop-filter:saturate(160%) blur(8px)}
+.tab{display:grid;place-items:center;gap:4px;color:#334155;font-size:12px}
+.tab .ic{width:22px;height:22px;border-radius:7px;border:1px solid var(--ring);display:grid;place-items:center;background:#fff}
+/* helper */
+svg{display:block}
+.wordmark{width:100%;height:100%}
+</style>
+<script>
+function go(href){ window.location.href = href; }
 </script>
 </head>
 <body>
-<header class="header">
-  <div class="nav">
-    <div class="brand serif">Centro B2B</div>
-    <div class="badges">
-      <span class="badge">GitHub Pages</span>
-      <span class="badge">Responsive</span>
-      <span class="badge">ES/EN ready</span>
+  <div class="appbar">
+    <div class="title">Centro B2B</div>
+    <div class="right">
+      <a class="iconbtn" href="https://abuelatata.com" target="_blank" title="Web AT">AT</a>
+      <a class="iconbtn" href="https://navyandblue.es" target="_blank" title="Web N&B">N&B</a>
     </div>
   </div>
-</header>
 
-<div class="container">
-  <div class="grid">
-    <div class="card">
-      <div class="hero heroAT">
-        <div class="label">
-          <div class="logo logoAT">AT</div>
-          <div class="meta"><div class="serif" style="font-size:20px;font-weight:800;color:var(--brandAT-ink)">Abuela Tata</div><small>Comunión · Ceremonia</small></div>
-        </div>
-        <div class="actions">
-          <a class="btn btnAT" onclick="go('abuela-tata.html')">Entrar</a>
-          <a class="btn btnAT" href="https://abuelatata.github.io/pedidos-abuela-tata-comunion26/" target="_blank">🛍️ Pedidos</a>
-          <a class="btn btnAT" href="https://abuelatata.github.io/CALCULADORA-TALLA-ABUELA-TATA-COMUNION26/" target="_blank">📏 Calculadora</a>
-        </div>
-        <div class="pin">
-          <form onsubmit="return pin('pinAT','AT2026','abuela-tata.html')">
-            <input id="pinAT" type="password" placeholder="PIN (opcional)">
-            <button class="btn">Acceder con PIN</button>
-          </form>
-        </div>
-        <div id="pinATAlert" class="alert">PIN incorrecto.</div>
+  <div class="container">
+    <div class="sectionTitle">Marcas</div>
+
+    <!-- Abuela Tata tile -->
+    <div class="tile">
+      <div class="logo">
+        <!-- Inline SVG wordmark placeholder (reemplazable por PNG/SVG reales) -->
+        <svg class="wordmark" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Abuela Tata">
+          <rect x="0" y="0" width="180" height="180" rx="16" fill="#fff"/>
+          <circle cx="48" cy="72" r="18" fill="#db8ea3" opacity=".9"/>
+          <rect x="70" y="54" width="62" height="36" rx="10" fill="#f7c9d4"/>
+          <path d="M30 124 C60 104, 120 104, 150 124" stroke="#db8ea3" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <text x="90" y="158" text-anchor="middle" font-family="Georgia,serif" font-size="22" fill="#4b2432">Abuela Tata</text>
+        </svg>
       </div>
-      <div class="linkgrid">
-        <a class="linkcard AT" href="abuela-tata.html"><div><strong>Área Abuela Tata</strong><br><small>Hub con todo integrado</small></div><span>→</span></a>
-        <a class="linkcard AT" href="tarifas/"><div><strong>Tarifas</strong><br><small>Excel y JSON</small></div><span>→</span></a>
+      <div class="meta">
+        <div class="name">Abuela Tata</div>
+        <small>Comunión · Ceremonia</small>
+        <div class="cta">
+          <a class="btn A" onclick="go('abuela-tata.html')">Entrar</a>
+          <a class="btn A" href="https://abuelatata.github.io/pedidos-abuela-tata-comunion26/" target="_blank">Pedidos</a>
+          <a class="btn A" href="https://abuelatata.github.io/CALCULADORA-TALLA-ABUELA-TATA-COMUNION26/" target="_blank">Calculadora</a>
+        </div>
       </div>
     </div>
 
-    <div class="card">
-      <div class="hero heroNB">
-        <div class="label">
-          <div class="logo logoNB">N&B</div>
-          <div class="meta"><div class="serif" style="font-size:20px;font-weight:800;color:var(--brandNB-ink)">Navy & Blue</div><small>Comunión Niño</small></div>
-        </div>
-        <div class="actions">
-          <a class="btn btnNB" onclick="go('navy-blue.html')">Entrar</a>
-          <a class="btn btnNB" href="https://abuelatata.github.io/pedidos-navy-and-blue/" target="_blank">🛍️ Pedidos</a>
-          <a class="btn btnNB" href="https://abuelatata.github.io/calculadora-navy-blue-v9/" target="_blank">📏 Calculadora</a>
-        </div>
-        <div class="pin">
-          <form onsubmit="return pin('pinNB','NB2026','navy-blue.html')">
-            <input id="pinNB" type="password" placeholder="PIN (opcional)">
-            <button class="btn">Acceder con PIN</button>
-          </form>
-        </div>
-        <div id="pinNBAlert" class="alert">PIN incorrecto.</div>
+    <!-- Navy & Blue tile -->
+    <div class="tile" style="margin-top:12px">
+      <div class="logo">
+        <!-- Inline SVG wordmark placeholder con galeón -->
+        <svg class="wordmark" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Navy & Blue">
+          <rect x="0" y="0" width="180" height="180" rx="16" fill="#fff"/>
+          <path d="M40 110 C60 90, 120 90, 140 110 L140 120 L40 120 Z" fill="#0b2a4a" opacity=".9"/>
+          <path d="M75 70 L95 40 L115 70 Z" fill="#0b2a4a"/>
+          <rect x="88" y="40" width="4" height="50" fill="#0b2a4a"/>
+          <circle cx="118" cy="64" r="6" fill="#0b2a4a"/>
+          <text x="90" y="158" text-anchor="middle" font-family="Georgia,serif" font-size="22" fill="#0a1e33">NAVY&BLUE</text>
+        </svg>
       </div>
-      <div class="linkgrid">
-        <a class="linkcard NB" href="navy-blue.html"><div><strong>Área Navy & Blue</strong><br><small>Hub con todo integrado</small></div><span>→</span></a>
-        <a class="linkcard NB" href="tarifas/"><div><strong>Tarifas</strong><br><small>Excel y JSON</small></div><span>→</span></a>
+      <div class="meta">
+        <div class="name">Navy & Blue</div>
+        <small>Comunión Niño</small>
+        <div class="cta">
+          <a class="btn N" onclick="go('navy-blue.html')">Entrar</a>
+          <a class="btn N" href="https://abuelatata.github.io/pedidos-navy-and-blue/" target="_blank">Pedidos</a>
+          <a class="btn N" href="https://abuelatata.github.io/calculadora-navy-blue-v9/" target="_blank">Calculadora</a>
+        </div>
       </div>
+    </div>
+
+    <div class="sectionTitle">Accesos rápidos</div>
+    <div class="grid">
+      <a class="card" href="tarifas/" target="_blank"><strong>Tarifas</strong><small>Excel y JSON</small></a>
+      <a class="card" href="catalogos/Comunion2026/PDF/" target="_blank"><strong>Catálogos</strong><small>PDF alta calidad</small></a>
+      <a class="card" href="https://abuelatata.github.io/pedidos-abuela-tata-comunion26/" target="_blank"><strong>Pedido AT</strong><small>WhatsApp</small></a>
+      <a class="card" href="https://abuelatata.github.io/pedidos-navy-and-blue/" target="_blank"><strong>Pedido N&B</strong><small>WhatsApp</small></a>
     </div>
   </div>
-</div>
 
-<footer>© Centro B2B — Abuela Tata & Navy & Blue</footer>
+  <div class="bottomnav">
+    <a class="tab" href="#"><div class="ic">🏠</div><div>Inicio</div></a>
+    <a class="tab" href="catalogos/Comunion2026/PDF/" target="_blank"><div class="ic">📚</div><div>Catálogos</div></a>
+    <a class="tab" href="tarifas/" target="_blank"><div class="ic">💶</div><div>Tarifas</div></a>
+    <a class="tab" href="#" onclick="alert('Escríbenos a info@abuelatata.com');"><div class="ic">💬</div><div>Ayuda</div></a>
+  </div>
+
+<!-- PWA (single-file friendly): genera manifest y sw desde blobs para previsualización local -->
+<script>
+// Manifest JSON con iconos SVG inline (data URLs)
+const manifest = {
+  "name": "Centro B2B · Abuela Tata & Navy & Blue",
+  "short_name": "B2B Abuela/N&B",
+  "display": "standalone",
+  "start_url": ".",
+  "background_color": "#f8fafc",
+  "theme_color": "#0b2a4a",
+  "icons": [
+    { "src": "data:image/svg+xml;utf8," + encodeURIComponent(`<?xml version="1.0" encoding="UTF-8"?>
+      <svg xmlns='http://www.w3.org/2000/svg' width='192' height='192'>
+        <rect width='100%' height='100%' fill='#0b2a4a'/>
+        <text x='50%' y='54%' text-anchor='middle' font-family='Georgia' font-size='70' fill='white'>B2B</text>
+      </svg>`), "sizes": "192x192", "type": "image/svg+xml" },
+    { "src": "data:image/svg+xml;utf8," + encodeURIComponent(`<?xml version="1.0" encoding="UTF-8"?>
+      <svg xmlns='http://www.w3.org/2000/svg' width='512' height='512'>
+        <rect width='100%' height='100%' fill='#db8ea3'/>
+        <text x='50%' y='54%' text-anchor='middle' font-family='Georgia' font-size='160' fill='white'>B2B</text>
+      </svg>`), "sizes": "512x512", "type": "image/svg+xml" }
+  ]
+};
+// manifest externo
+const blob = null, {type: 'application/manifest+json'});
+<link rel='manifest' href='manifest.webmanifest'>
+
+// Service Worker (cache básico)
+if('serviceWorker' in navigator){ navigator.serviceWorker.register('sw.js'); }/*
+  const swCode = `
+    const CACHE = 'b2b-cache-v1';
+    self.addEventListener('install', e=>{
+      e.waitUntil(caches.open(CACHE).then(c=>c.addAll(['./'])).then(()=>self.skipWaiting()));
+    });
+    self.addEventListener('activate', e=>{ e.waitUntil(self.clients.claim()); });
+    self.addEventListener('fetch', e=>{
+      const url = new URL(e.request.url);
+      if(url.origin === location.origin){
+        e.respondWith(caches.match(e.request).then(r=> r || fetch(e.request)));
+      }
+    });
+  `;
+  const swBlob = new Blob([swCode], {type:'text/javascript'});
+  const swUrl = URL.createObjectURL(swBlob);
+  */
+}
+</script>
 </body>
 </html>
